@@ -1,11 +1,11 @@
 # 🧬 疫苗主題建模RAG系統
 
-基於DSPy、RAG和多LLM的智能主題建模系統，專門用於分析疫苗相關文本數據。
+基於RAG和多LLM的智能主題建模系統，專門用於分析疫苗相關文本數據。
 
 ## ✨ 系統特點
 
 - **多LLM支持**: 支持OpenAI、Google Gemini、Anthropic Claude
-- **智能代理架構**: 基於DSPy的檢索、推理、評估三重代理
+- **智能代理架構**: 檢索、推理、評估三重代理系統
 - **向量化檢索**: 使用Sentence-BERT和FAISS的高效RAG系統
 - **多維評估**: 有效性、多樣性、可靠性三重評估體系
 - **互動式界面**: Streamlit Web應用，支持實時進度監控
@@ -21,7 +21,7 @@
 
 核心引擎層 (Core Engine Layer)
 ├── LLM API 集成模塊 (OpenAI/Gemini/Claude)
-├── DSPy 框架集成
+├── 代理框架集成
 └── 向量化引擎 (Sentence-BERT)
 
 業務邏輯層 (Business Logic Layer)
@@ -94,7 +94,7 @@ streamlit run app.py
 - 餘弦相似度檢索
 - 批量向量化處理
 
-### DSPy代理系統
+### 代理系統
 - **檢索代理**: 智能文檔檢索和上下文構建
 - **推理代理**: 基於LLM的主題生成和優化
 - **評估代理**: 多維度質量評估和反饋
@@ -141,7 +141,7 @@ streamlit run app.py
 - 支持的操作系統: Windows, macOS, Linux
 
 ### 主要依賴
-- `dspy-ai>=2.4.0` - DSPy框架
+- `langchain>=0.1.0` - LLM框架整合
 - `streamlit>=1.28.0` - Web界面
 - `sentence-transformers>=2.2.0` - 文本嵌入
 - `faiss-cpu>=1.7.0` - 向量數據庫

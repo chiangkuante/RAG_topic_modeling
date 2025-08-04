@@ -19,7 +19,7 @@ def check_requirements():
     try:
         # 嘗試導入關鍵包
         import streamlit
-        import dspy
+        import langchain
         import pandas
         import numpy
         import sentence_transformers
