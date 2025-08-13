@@ -45,12 +45,26 @@
 
 ### 1. 環境準備
 
+#### 方式一：使用UV（推薦）
+
 ```bash
 # 克隆項目
 git clone <repository-url>
-cd vaxx_dspy_RAG_topic_modeling
+cd RAG_topic_modeling
 
-# 安裝依賴
+# 安裝UV（如果尚未安裝）
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 自動安裝依賴
+./dev-setup.sh
+# 或手動執行
+uv sync
+```
+
+#### 方式二：使用pip（傳統方式）
+
+```bash
+# 安裝依賴（備選方案）
 pip install -r requirements.txt
 ```
 
@@ -64,11 +78,22 @@ pip install -r requirements.txt
 
 ### 3. 啟動系統
 
-```bash
-# 使用啟動腳本（推薦）
-python run.py
+#### 使用UV（推薦）
 
-# 或直接啟動Streamlit
+```bash
+# 使用便捷腳本
+./scripts/run-streamlit.sh
+
+# 或使用UV運行
+uv run streamlit run app.py
+uv run python run.py
+```
+
+#### 使用傳統方式
+
+```bash
+# 激活虛擬環境後運行
+python run.py
 streamlit run app.py
 ```
 
@@ -137,8 +162,9 @@ streamlit run app.py
 - 網絡: 穩定的互聯網連接（用於LLM API調用）
 
 ### 軟件要求
-- Python 3.8+
+- Python 3.9+ （由於google-generativeai依賴要求）
 - 支持的操作系統: Windows, macOS, Linux
+- UV（推薦的包管理器）或 pip
 
 ### 主要依賴
 - `langchain>=0.1.0` - LLM框架整合
@@ -196,6 +222,25 @@ for i, topic in enumerate(topic_result.topics, 1):
 
 ### 開發設置
 
+#### 使用UV（推薦）
+
+```bash
+# 安裝依賴
+uv sync
+
+# 運行測試
+uv run python -m pytest tests/
+
+# 代碼格式檢查
+uv run black src/
+uv run flake8 src/
+
+# 添加開發依賴
+uv add --dev pytest black flake8
+```
+
+#### 使用pip（傳統方式）
+
 ```bash
 # 安裝開發依賴
 pip install -r requirements.txt
@@ -225,8 +270,9 @@ flake8 src/
    - 調整batch_size參數
 
 3. **依賴安裝失敗**
-   - 使用虛擬環境
-   - 確保Python版本兼容
+   - 使用UV: `uv sync`（自動管理虛擬環境）
+   - 確保Python 3.9+版本
+   - 傳統方式：使用虛擬環境和pip
 
 4. **向量化慢**
    - 使用GPU版本的句嵌入模型
@@ -241,6 +287,29 @@ flake8 src/
 
 ---
 
+## 📦 包管理
+
+本項目已遷移至UV包管理器，提供：
+- ⚡ 更快的依賴解析和安裝
+- 🔒 可靠的lockfile支持（uv.lock）
+- 🐍 自動虛擬環境管理
+- 📝 現代化的pyproject.toml配置
+
+### UV常用命令
+
+```bash
+uv sync          # 同步依賴
+uv add <包名>     # 添加依賴
+uv remove <包名>  # 移除依賴
+uv run <命令>     # 運行命令
+uv tree          # 查看依賴樹
+```
+
+詳細命令請參考：[UV_COMMANDS.md](UV_COMMANDS.md)
+
+---
+
 **開發團隊**: AI研究團隊  
 **版本**: 1.0.0  
-**最後更新**: 2024年
+**最後更新**: 2025年  
+**包管理**: UV (推薦) | pip (兼容)

@@ -15,3 +15,17 @@
 ## 最終評估結果要使用markdown，內容包括:主題建模的五輪的10個主題、每輪的有效性、多樣性、最後的可靠性。
 
 # 使用gh cli上傳到git@github.com:chiangkuante/vaxx_RAG_topic_modeling.git
+
+## 套件管理更新 - Package Management Update
+
+項目已從 pip 遷移到 UV 進行更好的依賴管理：
+- 所有依賴現在通過 `pyproject.toml` 管理
+- 使用 `uv sync` 安裝依賴
+- 使用 `uv run <command>` 運行命令
+- 虛擬環境自動在 `.venv/` 目錄創建
+
+The project has been migrated from pip to UV for better dependency management:
+- All dependencies are now managed through `pyproject.toml`
+- Use `uv sync` to install dependencies  
+- Use `uv run <command>` to run commands
+- Virtual environment automatically created in `.venv/` directory
